@@ -20,7 +20,6 @@ def pattern_found(rule1,rule2):
             intersection =  rule1[i] & rule2[i]
             union = rule1[i] | rule2[i]
             unions.append(union)
-            #if len(intersection) == len(union):
             if intersection == set() or len(union) > len(intersection):#Note that this condition is rule formation, it isn't "intersection" between min and max.
                 difference +=1
                 indexes.append(i)
