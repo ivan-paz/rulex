@@ -17,10 +17,11 @@ def pattern_found(rule1,rule2):
     if rule1[-2] == rule2[-2]:
         difference = 0
         for i in range( len(rule1) - 2 ):
-            intersection =  rule1[i] & rule2[i]
+            #intersection =  rule1[i] & rule2[i]
             union = rule1[i] | rule2[i]
             unions.append(union)
-            if intersection == set() or len(union) > len(intersection):#Note that this condition is rule formation, it isn't "intersection" between min and max.
+            if rule1[i] != rule2[i]:
+            #if intersection == set() or len(union) > len(intersection):#Note that this condition is rule formation, it isn't "intersection" between min and max.
                 difference +=1
                 indexes.append(i)
         if difference <= rule1[-1]: #  GENERAL RISK FACTOR
