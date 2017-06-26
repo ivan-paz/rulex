@@ -14,22 +14,22 @@ def preset_into_rule(preset):
 def pattern_found(rule1,rule2):
     unions = []
     indexes = []
-    if rule1[-2] == rule2[-2]:
-        difference = 0
-        for i in range( len(rule1) - 2 ):
-            #intersection =  rule1[i] & rule2[i]
-            union = rule1[i] | rule2[i]
-            unions.append(union)
-            if rule1[i] != rule2[i]:
-            #if intersection == set() or len(union) > len(intersection):#Note that this condition is rule formation, it isn't "intersection" between min and max.
-                difference +=1
-                indexes.append(i)
-        if difference <= rule1[-1]: #  GENERAL RISK FACTOR
-            return [True, unions, indexes]
-        else:
-            return [False, None, None]
+#   if rule1[-2] == rule2[-2]:
+    difference = 0
+    for i in range( len(rule1) - 2 ):
+        #intersection =  rule1[i] & rule2[i]
+        union = rule1[i] | rule2[i]
+        unions.append(union)
+        if rule1[i] != rule2[i]:
+        #if intersection == set() or len(union) > len(intersection):#Note that this condition is rule formation, it isn't "intersection" between min and max.
+            difference +=1
+            indexes.append(i)
+    if difference <= rule1[-1]: #  GENERAL distance Factor
+        return [True, unions, indexes]
     else:
         return [False, None, None]
+ #   else:
+  #      return [False, None, None]
 #print( pattern_found( [{1}, {2}, 'A', 1], [{2}, {2}, 'A', 1])  )
 #print( pattern_found([{2}, {2}, 'A', 1],[{1}, {3}, 'A', 1])  )
 #print( pattern_found([{1}, {2}, 'A', 1],[{1}, {2,3},'A',1]))
