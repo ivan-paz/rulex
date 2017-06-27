@@ -1,5 +1,5 @@
 from rulex import rulex
-#Example  11 rulex description
+#Example  1 rulex description
 Presets = [
         [1,2,'a',1], 
         [1,4,'a',1], 
@@ -31,6 +31,9 @@ Presets = [
 #changin the order of the presets
 #Presets = [ [1,1,'A',1], [1,2,'A',1], [2,1,'A',1] ]
 #-----------------------------------------------------------------------
+
+# test 1 for the incremental algorithm
+Presets = [[1,2,'a',1],[1,4,'a',1],[5,2,'a',1],[5,4,'a',1]]
 
 Rules = []
 
