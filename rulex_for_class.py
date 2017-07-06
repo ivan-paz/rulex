@@ -71,20 +71,20 @@ def contradictions(rule,presets_other_classes):
     return False # No contradiction
 #print(contradictions([{1,2},{3},'A',1],[[{1},{4},'B',1],[{4},{8},'C',1],[{1},{3},'B',1]]))
 
-def create_rule(rule1, rule2, presets_other_classes):
-    [pattern, unions, indexes] = pattern_found(rule1,rule2)
-    if pattern == True:
-        rule = rule1
-        for index in indexes:
-            rule[index] = unions[index]
-        if rule1[-1]>=2:
-            contradiction = contradictions(rule,presets_other_classes)
-            if contradiction == False:
-                return rule
-        else:
+def create_rule(rule1, unions, indexes, presets_other_classes):
+    #[pattern, unions, indexes] = pattern_found(rule1,rule2)
+    #if pattern == True:
+    rule = rule1
+    for index in indexes:
+        rule[index] = unions[index]
+    if rule1[-1]>=2:
+        contradiction = contradictions(rule,presets_other_classes)
+        if contradiction == False:
             return rule
+        else:
+            return None
     else:
-        return None
+        return rule
 #print( create_rule([{1}, {2}, 'A', 1],[{2}, {2}, 'A', 1])  )
 #print( create_rule([{2}, {2}, 'A', 1],[{1}, {3}, 'A', 1]) )
 #print( create_rule([{1}, {2}, 'A', 1],[{1}, {2,3},'A',1]))
@@ -130,18 +130,18 @@ def rulex_for_class(Presets, Rules,  presets_other_classes):
         #move the first preset to rules tramsform it into a rule --->  {}, {}, 'A', 1
         Rules.append( preset_into_rule(Presets[0]) )
         #del Presets[0]
-    preset_counter = -1
+    #preset_counter = -1
     for preset in Presets:
         preset_copy = deepcopy(preset)
-        preset_counter +=1
+        #preset_counter +=1
         preset = preset_into_rule(preset)
         for i in range(len(Rules)):
-            [pattern,b,c] = pattern_found(preset,Rules[i])#is compress OR possible_rule_formation
+            [pattern,unions,indexes] = pattern_found(preset,Rules[i])#is compress OR possible_rule_formation
             if pattern == True:
-                print('create : ', create_rule( preset, Rules[i],presets_other_classes) )
-                Rules.append(create_rule( preset, Rules[i],presets_other_classes))#APPEND RULE
-                Rules.append( preset_into_rule(preset_copy))#APPEND PRESET
-        Rules.append(preset_into_rule(preset_copy))#APPEND PRESET
+                print('create : ', create_rule( preset, unions, indexes, presets_other_classes) )
+                Rules.append(create_rule( preset, unions, indexes, presets_other_classes)) #  APPEND RULE
+            Rules.append( preset_into_rule(preset_copy))#APPEND PRESET
+        #Rules.append(preset_into_rule(preset_copy))#APPEND PRESET
         #Presets[preset_counter] = None
     deleteRedundant(Rules)
     return Rules
