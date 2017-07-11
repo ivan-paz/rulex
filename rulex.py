@@ -16,21 +16,34 @@ def dictionary_of_categories(Presets, Rules):
         else:
             dictionary_of_classes[rule_class][1].append(rule)
     return dictionary_of_classes
-#-----------------------------------------------------------------
-
+#-----------------------------------------------------------------------------
+def presets_other_categories(key,dictionary_of_classes):
+    #Create set with presets of other classes
+    presets_other_classes = []
+    for key1 in dictionary_of_classes:
+        if key1 != key:
+            for p in dictionary_of_classes[key1][0]:
+                presets_other_classes.append(p)
+        else:
+            presets_current_class = dictionary_of_classes[key][0]
+            rules_current_class = dictionary_of_classes[key][1]
+    return [presets_other_classes, presets_current_class, rules_current_class]
+#-----------------------------------------------------------------------------
 def rulex(Presets, Rules, d):
     Extracted_rules = []
     dictionary_of_classes = dictionary_of_categories(Presets,Rules)
+    print(dictionary_of_classes)
     for key in dictionary_of_classes:
         #Create set with presets of other classes
-        presets_other_classes = []
-        for key1 in dictionary_of_classes:
-            if key1 != key:
-                for p in dictionary_of_classes[key1][0]:
-                    presets_other_classes.append(p)
-            else:
-                presets_current_class = dictionary_of_classes[key][0]
-                rules_current_class = dictionary_of_classes[key][1]
+        #presets_other_classes = []
+        #for key1 in dictionary_of_classes:
+         #   if key1 != key:
+          #      for p in dictionary_of_classes[key1][0]:
+           #         presets_other_classes.append(p)
+            #else:
+             #   presets_current_class = dictionary_of_classes[key][0]
+              #  rules_current_class = dictionary_of_classes[key][1]
+        [presets_other_classes,presets_current_class,rules_current_class] = presets_other_categories(key,dictionary_of_classes)
         print('key:',key, ';', 'presets other classes : ', presets_other_classes)
         print('search_patterns function')
         rules = search_patterns(presets_current_class,rules_current_class,presets_other_classes, d)
