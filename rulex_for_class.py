@@ -84,17 +84,17 @@ def create_rule(rule1, unions, indexes, presets_other_classes, d):
 
 #  True if a rule1 is subset of rule2, False otherwhise
 def contained( rule1, rule2 ):
-    if rule1[-1] == rule2[-1]:
-        equalParameters = 0
-        for i in range( len(rule1) - 1 ):
-            if rule1[i].issubset(rule2[i]):
-                equalParameters +=1
-        if equalParameters == len(rule1) - 1:
-            return True
-        else:
-            return False
+    #if rule1[-1] == rule2[-1]:
+    equalParameters = 0
+    for i in range( len(rule1) - 1 ):
+        if rule1[i].issubset(rule2[i]):
+            equalParameters +=1
+    if equalParameters == len(rule1) - 1:
+        return True
     else:
         return False
+    #else:
+    #    return False
 # TESTS
 #print(contained( [{1},{1},'A'],[{1},{1,2,3},'A']) )
 #True
