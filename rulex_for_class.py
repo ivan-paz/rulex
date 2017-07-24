@@ -123,19 +123,19 @@ def search_patterns(Presets, Rules,  presets_other_classes, d):
     if len(Rules) == 0:
         #move the first preset to rules tramsform it into a rule --->  {}, {}, 'A', 1
         Rules.append( preset_into_rule(Presets[0]) )
-        #del Presets[0]
-    #preset_counter = -1
     for preset in Presets:
         preset_copy = deepcopy(preset)
-        #preset_counter +=1
         preset = preset_into_rule(preset)
         for i in range(len(Rules)):
-            [pattern,unions,indexes] = pattern_found(preset,Rules[i], d)#is compress OR possible_rule_formation
+            [pattern,unions,indexes] = pattern_found(preset, Rules[i], d)#is compress OR possible_rule_formation
             if pattern == True:
                 print('create : ', create_rule( preset, unions, indexes, presets_other_classes, 1 ) )
                 Rules.append(create_rule( preset, unions, indexes, presets_other_classes,  1  )) #  APPEND RULE
             Rules.append( preset_into_rule(preset_copy))#APPEND PRESET
-        #Rules.append(preset_into_rule(preset_copy))#APPEND PRESET
-        #Presets[preset_counter] = None
     deleteRedundant(Rules)
     return Rules
+
+
+
+
+

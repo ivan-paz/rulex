@@ -38,4 +38,3 @@ Presets = [[1,2,'a'],[1,4,'a'],[5,2,'a'],[5,4,'a']]
 Rules = []
 
 rules = rulex(Presets, Rules, 1)
-
