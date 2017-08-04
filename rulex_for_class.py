@@ -127,6 +127,7 @@ def search_patterns(Presets, Rules,  presets_other_classes, d):
         preset_copy = deepcopy(preset)
         preset = preset_into_rule(preset)
         for i in range(len(Rules)):
+            print('comparing  :  ',preset,Rules[i])
             [pattern,unions,indexes] = pattern_found(preset, Rules[i], d)#is compress OR possible_rule_formation
             if pattern == True:
                 print('create : ', create_rule( preset, unions, indexes, presets_other_classes, 1 ) )
