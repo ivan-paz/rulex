@@ -38,6 +38,9 @@ Presets = [[1,2,'a'],[1,4,'a'],[5,2,'a'],[5,4,'a']]
 #Presets = [[1,1,'a'],[2,1,'a'],[3,1,'a'],[4,1,'a'],[5,1,'a'],[6,1,'a'],[7,1,'a'],[8,1,'a']]
 Presets = [[1,1,'a'],[2,1,'a'],[3,1,'a']]
 
+#Example section of algorithm complexity
+Presets =[[1,1,'a'],[1,2,'a'],[2,1,'a']] 
+
 Rules = []
 
 rules = rulex(Presets, Rules, 1)
