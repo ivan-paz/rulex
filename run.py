@@ -1,4 +1,5 @@
 from rulex import rulex
+#from rulex import rulex1
 #Example  1 rulex description
 Presets = [
         [1,2,'a',1], 
@@ -43,4 +44,11 @@ Presets =[[1,1,'a'],[1,2,'a'],[2,1,'a']]
 
 Rules = []
 
-rules = rulex(Presets, Rules, 1)
+rules = rulex(Presets, Rules, 1, 0)
+
+
+#Eliminationg redundant
+print('second version rulex1')
+Presets =[[1,1,'a'],[1,2,'a'],[2,1,'a']]
+R = []
+rules = rulex(Presets, Rules, 1, 1)

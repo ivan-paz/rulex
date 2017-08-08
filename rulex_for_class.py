@@ -137,6 +137,24 @@ def search_patterns(Presets, Rules,  presets_other_classes, d):
     return Rules
 
 
+# Search patterns delete redundant at each iteration
+def search_patterns_delete_redundant(Presets, Rules,  presets_other_classes, d):
+    if len(Rules) == 0:
+        #move the first preset to rules tramsform it into a rule --->  {}, {}, 'A', 1
+        Rules.append( preset_into_rule(Presets[0]) )
+    for preset in Presets:
+        preset_copy = deepcopy(preset)
+        preset = preset_into_rule(preset)
+        for i in range(len(Rules)):
+            print('comparing  :  ',preset,Rules[i])
+            if Rules[i] != None:
+                [pattern,unions,indexes] = pattern_found(preset, Rules[i], d)#is compress OR possible_rule_formation
+                if pattern == True:
+                    print('create : ', create_rule( preset, unions, indexes, presets_other_classes, 1 ) )
+                    Rules.append(create_rule( preset, unions, indexes, presets_other_classes,  1  )) #  APPEND RULE
+                Rules.append( preset_into_rule(preset_copy))#APPEND PRESET
+        deleteRedundant(Rules)
+    return Rules
 
 
 
