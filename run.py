@@ -52,3 +52,12 @@ print('second version rulex1')
 Presets =[[1,1,'a'],[1,2,'a'],[2,1,'a']]
 R = []
 rules = rulex(Presets, Rules, 1, 1)
+
+
+#pruebas 26sept2017
+for i in rules:
+    print(i,type(i))
+    for j in i:
+        print(j,type(j))
+
+
