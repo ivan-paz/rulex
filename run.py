@@ -2,14 +2,15 @@ from rulex import rulex
 #from rulex import rulex1
 #Example  1 rulex description
 Presets = [
-        [1,2,'a',1], 
-        [1,4,'a',1], 
-        [5,2,'a',1],
-        [5,4,'a',1],
-        [2,1,'b',1],
-        [2,3,'b',1],
-        [4,1,'b',1],
-        [4,3,'b',1]]
+        [1,2,'a'], 
+        [1,4,'a'], 
+        [5,2,'a'],
+        [5,4,'a']
+#        [2,1,'b',1],
+#        [2,3,'b',1],
+#        [4,1,'b',1],
+#        [4,3,'b',1]
+                    ]
 #Example 2
 #Presets = [[5,4,'B',1],[5,5,'B',1],[5,6,'B',1],[4,4,'B',1],[3,4,'B',1],[4,6,'B',1]]
 #---------------------------------------------------------------------------
@@ -34,30 +35,31 @@ Presets = [
 #-----------------------------------------------------------------------
 
 # test 1 for the incremental algorithm
-Presets = [[1,2,'a'],[1,4,'a'],[5,2,'a'],[5,4,'a']]
+#Presets = [[1,2,'a'],[1,4,'a'],[5,2,'a'],[5,4,'a']]
 
 #Presets = [[1,1,'a'],[2,1,'a'],[3,1,'a'],[4,1,'a'],[5,1,'a'],[6,1,'a'],[7,1,'a'],[8,1,'a']]
-Presets = [[1,1,'a'],[2,1,'a'],[3,1,'a']]
+#Presets = [[1,1,'a'],[2,1,'a'],[3,1,'a']]
 
 #Example section of algorithm complexity
-Presets =[[1,1,'a'],[1,2,'a'],[2,1,'a']] 
+#Presets =[[1,1,'a'],[1,2,'a'],[2,1,'a']] 
 
 Rules = []
 
-rules = rulex(Presets, Rules, 1, 0)
+#             presets  rules  dist delete_redundant after each iteration
+rules = rulex(Presets, Rules, 1,   False)
 
 
 #Eliminationg redundant
-print('second version rulex1')
-Presets =[[1,1,'a'],[1,2,'a'],[2,1,'a']]
-R = []
-rules = rulex(Presets, Rules, 1, 1)
+#print('second version rulex1')
+#Presets =[[1,1,'a'],[1,2,'a'],[2,1,'a']]
+#R = []
+#rules = rulex(Presets, Rules, 1, 1)
 
 
 #pruebas 26sept2017
-for i in rules:
-    print(i,type(i))
-    for j in i:
-        print(j,type(j))
+#for i in rules:
+#    print(i,type(i))
+#    for j in i:
+#        print(j,type(j))
 
 

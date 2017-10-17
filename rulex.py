@@ -55,7 +55,7 @@ def presets_other_categories(key,dictionary_of_classes):
 #    return Extracted_rules
 
 #---    deleting redundant rules after each iteration ----------------
-def rulex(Presets, Rules, d, delete_redundant):
+def rulex(Presets, Rules, d, delete_redundant=False):
     Extracted_rules = []
     dictionary_of_classes = dictionary_of_categories(Presets,Rules)
     print(dictionary_of_classes)
@@ -63,7 +63,7 @@ def rulex(Presets, Rules, d, delete_redundant):
         [presets_other_classes,presets_current_class,rules_current_class] = presets_other_categories(key,dictionary_of_classes)
         print('key:',key, ';', 'presets other classes : ', presets_other_classes)
         print('search_patterns function')
-        if delete_redundant == 0:
+        if delete_redundant == False:
             rules = search_patterns(presets_current_class,rules_current_class,presets_other_classes, d)
         else:
             rules = search_patterns_delete_redundant(presets_current_class,rules_current_class,presets_other_classes, d)
