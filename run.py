@@ -1,16 +1,16 @@
 from rulex import rulex
 #from rulex import rulex1
 #Example  1 rulex description
-Presets = [
-        [1,2,'a'], 
-        [1,4,'a'], 
-        [5,2,'a'],
-        [5,4,'a']
+#Presets = [
+#        [1,2,'a'], 
+#        [1,4,'a'], 
+#        [5,2,'a'],
+#        [5,4,'a']
 #        [2,1,'b',1],
 #        [2,3,'b',1],
 #        [4,1,'b',1],
 #        [4,3,'b',1]
-                    ]
+#                    ]
 #Example 2
 #Presets = [[5,4,'B',1],[5,5,'B',1],[5,6,'B',1],[4,4,'B',1],[3,4,'B',1],[4,6,'B',1]]
 #---------------------------------------------------------------------------
@@ -43,10 +43,19 @@ Presets = [
 #Example section of algorithm complexity
 #Presets =[[1,1,'a'],[1,2,'a'],[2,1,'a']] 
 
+# set of presets Table 1 and Table 2
+Presets = [
+	[100,0.5,'Part A'],
+	[100,0.7,'Part A'],
+	[150,0.5,'Part A'],
+	[150,0.7,'Part A']
+	]
+
 Rules = []
 
 #             presets  rules  dist delete_redundant after each iteration
-rules = rulex(Presets, Rules, 1,   False)
+#             False is the predefined value
+rules = rulex(Presets, Rules, 1,   True)
 
 
 #Eliminationg redundant
