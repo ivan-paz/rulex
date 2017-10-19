@@ -119,6 +119,8 @@ def deleteRedundant( rules ):
 
 
 # Search patterns
+# operative function before cleaning the code to appear as pseudocode
+'''
 def search_patterns(Presets, Rules, presets_other_classes, d):
     print('Searching patterns removing redundant rules at the end of the "for" .')
     if len(Rules) == 0:
@@ -141,6 +143,25 @@ def search_patterns(Presets, Rules, presets_other_classes, d):
         print(Rules)
     deleteRedundant(Rules)
     return Rules
+'''
+# Search patterns
+def search_patterns(Presets, Rules, presets_other_classes, d):
+    print('Removing redundant under completion of iterations :  ')
+    if not Rules:
+        Rules.append( preset_into_rule(Presets[0]) )
+    for preset in Presets:
+        preset_copy = deepcopy(preset)
+        preset = preset_into_rule(preset)
+        for i in range(len(Rules)):
+            [pattern,unions,indexes] = pattern_found(preset, Rules[i], d)
+            if pattern:
+                Rules.append(create_rule( preset, unions, indexes, presets_other_classes,  d  ))
+            Rules.append( preset_into_rule(preset_copy))
+        # DELETE D U P L I C A T E D
+        Rules=[ii for n,ii in enumerate(Rules) if ii not in Rules[:n]]
+    deleteRedundant(Rules)
+    return Rules
+
 
 # Search patterns delete redundant at each iteration
 def search_patterns_delete_redundant(Presets, Rules,  presets_other_classes, d):
