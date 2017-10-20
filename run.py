@@ -43,7 +43,7 @@ from rulex import rulex
 #Example section of algorithm complexity
 #Presets =[[1,1,'a'],[1,2,'a'],[2,1,'a']] 
 
-# set of presets Table 1 and Table 2
+# set of presets Table 1 whose rules are in table Table 2
 Presets = [
 	[100,0.5,'Part A'],
 	[100,0.7,'Part A'],
@@ -51,11 +51,19 @@ Presets = [
 	[150,0.7,'Part A']
 	]
 
+# set of presets Table 3 permutation of Table 1
+Presets = [
+        [100,0.5,'Part A'],
+	[150,0.5,'Part A'],
+        [100,0.7,'Part A'],
+        [150,0.7,'Part A']
+        ]
+
 Rules = []
 
 #             presets  rules  dist delete_redundant after each iteration
 #             False is the predefined value
-rules = rulex(Presets, Rules, 1,   True)
+rules = rulex(Presets, Rules, 1, True)
 
 
 #Eliminationg redundant
