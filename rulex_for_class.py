@@ -190,8 +190,8 @@ def search_patterns_delete_redundant(Presets, Rules,  presets_other_classes, d):
 # Search patterns UNIFYED version 25 oct 2017
 def search_patterns1(presets_current_class, rules_current_class, presets_other_classes, d, delete_redundant_every_iteration):
     print('Removing redundant under completion of iterations :  ')
-    if not rules_current_class:
-        rules_current_class.append( preset_into_rule(presets_current_class[0]) )
+    #if not rules_current_class: #Commented 20 NOV
+    #    rules_current_class.append( preset_into_rule(presets_current_class[0]) ) #Commented 20 NOV
     for preset in presets_current_class:
        # preset_copy = deepcopy(preset)
         rule_preset = preset_into_rule(preset)
@@ -201,7 +201,7 @@ def search_patterns1(presets_current_class, rules_current_class, presets_other_c
                 if pattern:
                     rules_current_class.append(create_rule( rule_preset, unions, indexes, presets_other_classes,  d  ))
                     #print('CREATED RULE',create_rule(rule_preset,unions,indexes,presets_other_classes,d))#jajajajajaj
-                rules_current_class.append( rule_preset)#preset_into_rule(preset_copy))
+        rules_current_class.append( rule_preset )#preset_into_rule(preset_copy)) # Lo moví de acuerdo con Enrique 20 Nov
         # DELETE D U P L I C A T E D
         rules_current_class=[ii for n,ii in enumerate(rules_current_class) if ii not in rules_current_class[:n]]
         if delete_redundant_every_iteration:
