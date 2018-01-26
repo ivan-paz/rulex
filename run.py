@@ -93,6 +93,8 @@ from copy import deepcopy
 #rules = rulex(Presets, Rules, 1, 1)
 
 #-------------------------------------------------------------------
+#                   Rulex Maximum compression
+#-------------------------------------------------------------------
 def dictionary_of_categories(Presets, Rules):
     dictionary_of_classes = dict()
     for preset in Presets:
@@ -215,6 +217,26 @@ def deleteRedundant( rules ):
     return rules
 
 
+#def compressRules(Presets,previousRules,d,delete_every_iteration):
+#    setOfRules = []
+#    dictionary = dictionary_of_categories(Presets,previousRules)
+#    for key in dictionary:
+#        [presets_other_classes,presets_current_class,rules_current_class] = separate_presets_and_rules_other_categories(key,dictionary)
+#        print('rules current class', rules_current_class,len(rules_current_class))
+#        for i in range(len(rules_current_class)):
+#            rule1 = rules_current_class[i]
+#            for rule2 in setOfRules:
+#                [pattern,unions,indexes] = pattern_found(rule1,rule2,d)
+#                if pattern:
+#                    rule = create_rule(rule1,unions,indexes,presets_other_classes,d)
+#                    print('created rule',rule)
+#                    setOfRules.append(rule)
+#                setOfRules=[ii for n,ii in enumerate(setOfRules) if ii not in setOfRules[:n]]
+#            setOfRules.append(rule1)
+#        setOfRules = deleteRedundant(setOfRules)
+#    setOfRules = [x for x in setOfRules if x is not None]  
+#    return setOfRules
+
 def compressRules(Presets,previousRules,d,delete_every_iteration):
     setOfRules = []
     dictionary = dictionary_of_categories(Presets,previousRules)
@@ -224,19 +246,28 @@ def compressRules(Presets,previousRules,d,delete_every_iteration):
         for i in range(len(rules_current_class)):
             rule1 = rules_current_class[i]
             for rule2 in setOfRules:
-                [pattern,unions,indexes] = pattern_found(rule1,rule2,d)
-                if pattern:
-                    rule = create_rule(rule1,unions,indexes,presets_other_classes,d)
-                    print('created rule',rule)
-                    setOfRules.append(rule)
-                setOfRules=[ii for n,ii in enumerate(setOfRules) if ii not in setOfRules[:n]]
+                if rule2!=None: # to avoid comparison with None
+                    [pattern,unions,indexes] = pattern_found(rule1,rule2,d)
+                    if pattern:
+                        rule = create_rule(rule1,unions,indexes,presets_other_classes,d)
+                        print('created rule',rule)
+                        setOfRules.append(rule)
+                    setOfRules=[ii for n,ii in enumerate(setOfRules) if ii not in setOfRules[:n]]
             setOfRules.append(rule1)
         setOfRules = deleteRedundant(setOfRules)
-    setOfRules = [x for x in setOfRules if x is not None]  
+    setOfRules = [x for x in setOfRules if x is not None]
     return setOfRules
 
 
 Rules = [] #start with empty rules
+#Presets = [
+#	[2,3,'A'],
+#	[2,6,'A'],
+#	[4,3,'A'],
+#	[4,6,'A'],
+#	[3,4,'B']
+#	]
+#Presets = [ [2,3,'A'],[2,6,'A']]
 
 def rulexMaxCompress(Presets,Rules,d,delete_every_iteration):
     previousRules = []
@@ -244,23 +275,33 @@ def rulexMaxCompress(Presets,Rules,d,delete_every_iteration):
     cont = 0
     while rules != previousRules:
         cont +=1
-        print('no yet',cont)
+        print('rules != previousRules',cont)
         previousRules = rules
         rules = compressRules(Presets, previousRules, d, delete_every_iteration)
     print('final set of rules: ',rules)
     return rules
 
-#rules = rulexMaxCompress(Presets, Rules, 1, True)
-
-Rules = []
+#Presets First Example d1 d2 and d3 paper Rio de Janeiro
 Presets = [
-	[2,3,'A'],
-	[2,6,'A'],
-	[4,3,'A'],
-	[4,6,'A'],
-	[3,4,'B']
-	]
-rules = rulex(Presets,Rules,1,False)
+	[82.5,55.25,0.5,0.5,0.23,'intro'],
+	[660,221,0.3,0.5,0.23,'intro'],
+	[330,221,0.3,0.5,0.23,'intro'],
+	[660,110.5,0.3,0.5,0.23,'intro']
+]
+
+
+rules = rulexMaxCompress(Presets, Rules, 1, True)
+
+#Rules = []
+#Presets = [
+#	[2,3,'A'],
+#	[2,6,'A'],
+#	[4,3,'A'],
+#	[4,6,'A'],
+#	[3,4,'B']
+#	]
+#Presets = [[2,3,'A']]
+#rules = rulex(Presets,Rules,1,False)
 print('...........................................')
 [print(x) for x in rules] 
 
