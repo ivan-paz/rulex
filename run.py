@@ -290,7 +290,7 @@ Presets = [
 ]
 
 
-rules = rulexMaxCompress(Presets, Rules, 1, True)
+rules = rulexMaxCompress(Presets, Rules, 2, False)
 
 #Rules = []
 #Presets = [
