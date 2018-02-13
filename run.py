@@ -282,16 +282,45 @@ def rulexMaxCompress(Presets,Rules,d,delete_every_iteration):
     return rules
 
 #Presets First Example d1 d2 and d3 paper Rio de Janeiro
+#Presets = [
+#	[82.5,55.25,0.5,0.5,0.23,'intro'],
+#	[660,221,0.3,0.5,0.23,'intro'],
+#	[330,221,0.3,0.5,0.23,'intro'],
+#	[660,110.5,0.3,0.5,0.23,'intro']
+#]
+
+#presets for the last example ruo de janeiro
+#Presets = [
+#[200, 150, 0.23, 150, 0.3, 160, 0.5, 0.3, ' Part B'],
+#[200, 150, 0.26, 150, 0.3, 160, 0.4, 0.3, ' Part B'],
+#[200, 150, 0.23, 150, 0.3, 161, 0.5, 0.3, ' Part B']
+#]
+#Presets = [
+#[20 , 150, 0.25, 101, 0.3, 102, 0.5, 0.33,' Part E'],
+#[200, 150, 0.28, 150, 0.6, 160, 0.4, 0.33,' Part E'],
+#[100, 100, 0.25, 100, 0.6, 102, 0.4, 0.33,' Part E']
+#]
+#
+#Presets = [
+#[ 20,  150, 0.25,101, 0.3, 102, 0.5, 0.33, 'Part C'],
+#[200,  150, 0.28,150, 0.6, 160, 0.4, 0.38, 'Part C'],
+#[100,  100, 0.25,100, 0.6, 102, 0.4, 0.33, 'Part C']
+#]
+
+
 Presets = [
-	[82.5,55.25,0.5,0.5,0.23,'intro'],
-	[660,221,0.3,0.5,0.23,'intro'],
-	[330,221,0.3,0.5,0.23,'intro'],
-	[660,110.5,0.3,0.5,0.23,'intro']
-]
+	[2,5,'i'],
+	[4,5,'i'],
+	[2,3,'i'],
+	[4,3,'i'],
+	[6,4,'i'],
+	[7,4,'i']
+	]
+print('The Presets :  ', Presets)
+rules = rulexMaxCompress(Presets, Rules, 1, False)
 
 
-rules = rulexMaxCompress(Presets, Rules, 2, False)
-
+#rules = rulex(Presets, Rules,4, True)
 #Rules = []
 #Presets = [
 #	[2,3,'A'],
