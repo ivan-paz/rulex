@@ -1,6 +1,6 @@
 #from rulex_for_class import search_patterns
 #from rulex_for_class import search_patterns_delete_redundant
-from rulex_for_class import search_patterns1
+from rulex_for_class import search_patterns
 def dictionary_of_categories(Presets, Rules):
     dictionary_of_classes = dict()
     for preset in Presets:
@@ -68,7 +68,7 @@ def rulex(Presets, Rules, d, delete_redundant_every_iteration=True):
         #    rules = search_patterns(presets_current_class,rules_current_class,presets_other_classes, d)
         #else:
         #    rules = search_patterns_delete_redundant(presets_current_class,rules_current_class,presets_other_classes, d)
-        rules = search_patterns1(presets_current_class,rules_current_class,presets_other_classes,d,delete_redundant_every_iteration)
+        rules = search_patterns(presets_current_class,rules_current_class,presets_other_classes,d,delete_redundant_every_iteration)
         for r in rules:
             if r != None:
                 final_rules.append(r)
