@@ -1,5 +1,8 @@
 from rulex import rulex
 from copy import deepcopy
+
+from rulex_for_class import preset_into_rule
+import itertools
 #from rulex import rulex1
 #Example  1 rulex description
 #Presets = [
@@ -308,16 +311,30 @@ def rulexMaxCompress(Presets,Rules,d,delete_every_iteration):
 #]
 
 
+#Presets = [
+#	[2,5,'i'],
+#	[4,5,'i'],
+#	[2,3,'i'],
+#	[4,3,'i'],
+#	[6,4,'i'],
+#	[7,4,'i']
+#	]
+#print('The Presets :  ', Presets)
+
+#Presets = [[2,2,1,'a'],[2,4,1,'a'],[2,2,2,'a'],[2,3,2,'a'],[4,2,2,'a'],[4,3,2,'a']]
+#Rules = []
+
+# Test 1 rulex vs setRulex
 Presets = [
-	[2,5,'i'],
-	[4,5,'i'],
-	[2,3,'i'],
-	[4,3,'i'],
-	[6,4,'i'],
-	[7,4,'i']
-	]
-print('The Presets :  ', Presets)
-rules = rulexMaxCompress(Presets, Rules, 1, False)
+[2, 2, 'a'],
+[2, 4, 'a'],
+[4, 2, 'a'],
+[4, 3, 'a'],
+[1, 1, 'b'],
+[1, 2, 'b']]
+Rules = []
+
+rules = rulexMaxCompress(Presets, Rules, 2, False)
 
 
 #rules = rulex(Presets, Rules,4, True)
