@@ -325,16 +325,16 @@ def rulexMaxCompress(Presets,Rules,d,delete_every_iteration):
 #Rules = []
 
 # Test 1 rulex vs setRulex
-Presets = [
-[2, 2, 'a'],
-[2, 4, 'a'],
-[4, 2, 'a'],
-[4, 3, 'a'],
-[1, 1, 'b'],
-[1, 2, 'b']]
-Rules = []
+#Presets = [
+#[2, 2, 'a'],
+#[2, 4, 'a'],
+#[4, 2, 'a'],
+#[4, 3, 'a'],
+#[1, 1, 'b'],
+#[1, 2, 'b']]
+#Rules = []
 
-rules = rulexMaxCompress(Presets, Rules, 2, False)
+#rules = rulexMaxCompress(Presets, Rules, 2, False)
 
 
 #rules = rulex(Presets, Rules,4, True)
@@ -348,6 +348,18 @@ rules = rulexMaxCompress(Presets, Rules, 2, False)
 #	]
 #Presets = [[2,3,'A']]
 #rules = rulex(Presets,Rules,1,False)
+
+Presets = []
+Rules = [[{2}, {2, 4}, 'a'], [{4}, {2, 3}, 'a']]
+d = 1
+rules = rulex(Presets,Rules,d,False)
 print('...........................................')
 [print(x) for x in rules] 
+
+
+
+
+
+
+
 
