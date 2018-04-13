@@ -349,9 +349,10 @@ def rulexMaxCompress(Presets,Rules,d,delete_every_iteration):
 #Presets = [[2,3,'A']]
 #rules = rulex(Presets,Rules,1,False)
 
-Presets = []
+#Presets = []
 Rules = [[{2}, {2, 4}, 'a'], [{4}, {2, 3}, 'a']]
-d = 1
+Rules = []
+d = 2
 rules = rulex(Presets,Rules,d,False)
 print('...........................................')
 [print(x) for x in rules] 
